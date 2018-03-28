@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/stylesheets/material.min.css">
+  <link rel="stylesheet" href="/stylesheets/login.css">
+  <title>Document</title>
+  <style media="screen">
+    .mdl-layout__content{
+      width: 100%;
+      text-align: center;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <main class="mdl-layout__content">
+    <div class="page-content">
+      <h1>login</h1>
+      <form action="/login" method="post">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" name="phone" type="text" id="phone">
+          <label class="mdl-textfield__label" for="sample3">phone</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" name="password" type="password" id="password">
+          <label class="mdl-textfield__label" for="sample3">password</label>
+        </div>
+      </br>
+        <input type="submit" class="mdl-button mdl-js-button mdl-button--raised">submit</input>
+      </form>
+    </div>
+  </main>
+    <script src="/javascripts/material.min.js" charset="utf-8"></script>
+</body>
+</html>

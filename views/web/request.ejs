@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/stylesheets/material.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>Document</title>
+  <style media="screen">
+    main{
+      width: 100%;
+      height: 100%;
+    }
+    form{
+      width: 70%;
+      padding: 16px;
+      height: 500px;
+      background-color: #fff;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      margin-left: -40%;
+      margin-top: -250px;
+    }
+    h3{
+      margin: 0px;
+    }
+    .mdl-card{
+      width: 100%;
+    }
+    h1{
+      margin-top: 50px;
+    }
+    .shadow{
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      opacity: 0.3;
+      filter: :alpha(opacity:30);
+      left: 0;
+      top: 0;
+    }
+    .mdl-textfield{
+      width: 100%;
+      text-align: center;
+    }
+    .mdl-card__actions a{
+      float: right;
+    }
+    .add{
+      display: none;
+    }
+    .page-content{
+      padding: 16px;
+    }
+    .add_btn{
+      float: right;
+      margin-top: 10px;
+    }
+    .card{
+      width: 300px;
+      padding: 16px;
+      margin: 10px;
+      border: 1px solid #eee;
+      border-radius: 5px;
+    }
+    .card span{
+      font-weight: 400;
+    }
+    .watting{
+      color: red;
+    }
+    .doing{
+      color: green;
+    }
+    .overing{
+      color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <% include ../layout/webHeader %>
+  <main class='mdl-layout__content'>
+    <div class="page-content">
+      <h1>request
+        <a herf='?add' class="add_btn mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+          <i class="material-icons">add</i>
+        </a>
+      </h1>
+
+
+      <% for(var i=0;i<data.length;i++) { %>
+      <div class="card">
+        <div class="text_con">
+          <span><strong>time:</strong></span>
+          <p> <%= data[i].time %> </p>
+        </div>
+        <div class="text_con">
+          <span><strong>meetingname:</strong></span>
+          <p> <%= data[i].meetingname %> </p>
+        </div>
+        <div class="text_con">
+          <span><strong>meetingnum:</strong></span>
+          <p> <%= data[i].meetingnum %> </p>
+        </div>
+        <div class="text_con">
+          <span><strong>despretion:</strong></span>
+          <p> <%= data[i].despretion %> </p>
+        </div>
+
+        <%if(data[i].status == 0) {%>
+          <span class="watting">审查中</span>
+        <% }else if(data[i].status == 1){ %>
+          <span class="doing">进行中</span>
+        <% }else{ %>
+          <span class="overing">已结束</span>
+        <% } %>
+
+      </div>
+      <% } %>
+      <div class="add">
+        <div class="shadow"></div>
+        <form class="" action="/request" method="post">
+        <div class="mdl-card">
+          <div class="mdl-card__title">
+            <h3>please fill in this application form</h3>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" name="meetingname" type="text" id="meetingname">
+            <label class="mdl-textfield__label" for="sample3">meeting people name</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" name="meetingnum" type="text" id="meetingnum">
+            <label class="mdl-textfield__label" for="sample3">meeting people number</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" name="despretion" type="text" id="despretion">
+            <label class="mdl-textfield__label" for="sample3">despretion</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" name="time" type="date" id="time">
+            <label class="mdl-textfield__label" for="sample3">time</label>
+          </div>
+          <div class="mdl-card__actions mdl-card--border">
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised">submit</button>
+            <a class="mdl-button mdl-js-button mdl-button--raised" href="?">CANCEL</a>
+          </div>
+          </div>
+        </div>
+      </form>
+      </div>
+    </div>
+  </main>
+</body>
+<script type="text/javascript">
+  window.onload = function(){
+    var btn = document.querySelector('.add_btn');
+    var add_box=document.querySelector('.add');
+    btn.onclick = function(){
+      add_box.style.display= 'block';
+    }
+  }
+</script>
+<script src="/javascripts/material.min.js" charset="utf-8"></script>
+</html>

@@ -1,0 +1,3 @@
+#忽略你node_module文件夹及以下所有文件
+node_modules*
+md5_2.js

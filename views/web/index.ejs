@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/stylesheets/material.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>Document</title>
+  <style>
+    .demo-card-wide.mdl-card {
+      width: 512px;
+    }
+
+    .demo-card-wide>.mdl-card__title {
+      color: #fff;
+      height: 176px;
+      background: url('images/card_bg.jpg') center / cover;
+    }
+
+    .demo-card-wide>.mdl-card__menu {
+      color: #fff;
+    }
+    .mdl-layout__content{
+      width: 100%;
+    }
+    .mdl-card{
+      margin: 0 auto;
+      margin-top: 200px;
+      margin-bottom: 200px;
+    }
+    .mdl-button{
+      width: 100px;
+      margin: 20px;
+    }
+    .mdl-button.other-btn{
+      float: right;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="mdl-layout__content">
+
+    <!-- Wide card with share menu button -->
+    <%= title %>
+
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Welcome</h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...
+      </div>
+      <div class="btn">
+        <button class="mdl-button mdl-button--raised">
+          <a href="login">Login</a>
+        </button>
+        <button class="mdl-button other-btn mdl-button--raised">
+          <a href="regert">Regert</a>
+        </button>
+      </div>
+
+    </div>
+
+
+
+  </main>
+  <% include ../layout/footer %>
+</body>
+<script src="/javascripts/material.min.js" charset="utf-8"></script>
+
+</html>
