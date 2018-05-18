@@ -51,20 +51,19 @@ var nowDate = require('../../libs/time.js')
    console.log(username);
    console.log(req.body);
    if (req.body.mod_id) {
-     db.query(`SELECT COUNT(*) AS timeCount FROM request WHERE time='${req.body.time}'`,function(err,timeCot){
+     db.query(`SELECT COUNT(*) AS timeCount FROM request WHERE time='${req.body.time}' AND status!=2`,function(err,timeCot){
        if (err) {
          console.log(err);
        } else {
-         var windows = timeCot.timeCount+1;
+         var windows = timeCot[0].timeCount+1;
          if (windows>12) {
            res.send("今日预约已满，请另外选择日期");
          } else {
+           console.log(windows);
            db.query(`UPDATE request SET \
              meetingname = '${req.body.meetingname}',\
              meetingnum = '${req.body.meetingnum}',\
              despretion = '${req.body.despretion}',\
-             username = '${username}',\
-             userid = '${userid}',\
              time = '${req.body.time}',\
              status = '0',\
              window = '${windows}'\
@@ -79,7 +78,7 @@ var nowDate = require('../../libs/time.js')
        }
      });
    } else {
-     db.query(`SELECT COUNT(*) AS timeCount FROM request WHERE time='${req.body.time}'`,function(err,timeCot){
+     db.query(`SELECT COUNT(*) AS timeCount FROM request WHERE time='${req.body.time}' AND status!=2`,function(err,timeCot){
        if (err) {
          console.log(err);
        } else {
