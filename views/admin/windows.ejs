@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/stylesheets/material.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+  <title>windows</title>
+  <style media="screen">
+    .mdl-card{
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>welcome windows</h1>
+  <div class="container">
+    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+      <div class="mdl-tabs__tab-bar">
+        <a href="#a" class="mdl-tabs__tab is-active">A窗口</a>
+        <a href="#b" class="mdl-tabs__tab">B窗口</a>
+        <a href="#c" class="mdl-tabs__tab">C窗口</a>
+        <a href="#d" class="mdl-tabs__tab">D窗口</a>
+      </div>
+      <div class="mdl-tabs__panel is-active" id="a">
+        <div class="row">
+          <% for(var i=0;i<Aarr.length;i++){ %>
+            <div class="mdl-card mdl-shadow--4dp col-md-3 col-sm-6 col-12">
+              <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">
+                  <span class="sequence"><%=Aarr[i].window%></span><br>
+                  <%= Aarr[i].username %>
+                </h2>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <%=Aarr[i].despretion%>
+              </div>
+              <div class="mdl-card__actions">
+                <form action="/admin/windows" method="post">
+                  <input type="hidden" name="process_id" value="<%= Aarr[i].id %>" >
+                    <div class="mdl-textfield mdl-js-textfield">
+                      <textarea name="process" class="mdl-textfield__input" type="text" ><%= Aarr[i].process %></textarea>
+                      <label class="mdl-textfield__label" for="sample5">Process Summary</label>
+                    </div>
+                  <%if(Aarr[i].process == "not yet added"){%>
+                    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised">
+                      Button
+                    </button>
+                  <%}else{%>
+                    <button class="mdl-button mdl-js-button mdl-button--raised" disabled>
+                      Button
+                    </button>
+                  <%}%>
+                </form>
+              </div>
+            </div>
+            <% } %>
+        </div>
+      </div>
+      <div class="mdl-tabs__panel" id="b">
+        <div class="row">
+          <% for(var i=0;i<Barr.length;i++){ %>
+            <div class="mdl-card mdl-shadow--4dp col-md-3 col-sm-6 col-12">
+              <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">
+                  <span class="sequence"><%=Barr[i].window%></span><br>
+                  <%= Barr[i].username %>
+                </h2>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <%=Barr[i].despretion%>
+              </div>
+              <div class="mdl-card__actions">
+                <form action="/admin/windows" method="post">
+                  <input type="hidden" name="process_id" value="<%= Barr[i].id %>" >
+                    <div class="mdl-textfield mdl-js-textfield">
+                      <textarea name="process" class="mdl-textfield__input" type="text" ><%= Barr[i].process %></textarea>
+                      <label class="mdl-textfield__label" for="sample5">Process Summary</label>
+                    </div>
+                  <%if(Barr[i].process == "not yet added"){%>
+                    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised">
+                      Button
+                    </button>
+                  <%}else{%>
+                    <button class="mdl-button mdl-js-button mdl-button--raised" disabled>
+                      Button
+                    </button>
+                  <%}%>
+                </form>
+              </div>
+            </div>
+            <% } %>
+        </div>
+      </div>
+      <div class="mdl-tabs__panel" id="c">
+        <div class="row">
+          <% for(var i=0;i<Carr.length;i++){ %>
+            <div class="mdl-card mdl-shadow--4dp col-md-3 col-sm-6 col-12">
+              <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">
+                  <span class="sequence"><%=Carr[i].window%></span><br>
+                  <%= Carr[i].username %>
+                </h2>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <%=Carr[i].despretion%>
+              </div>
+              <div class="mdl-card__actions">
+                <form action="/admin/windows" method="post">
+                  <input type="hidden" name="process_id" value="<%= Carr[i].id %>" >
+                    <div class="mdl-textfield mdl-js-textfield">
+                      <textarea name="process" class="mdl-textfield__input" type="text" ><%= Carr[i].process %></textarea>
+                      <label class="mdl-textfield__label" for="sample5">Process Summary</label>
+                    </div>
+                  <%if(Carr[i].process == "not yet added"){%>
+                    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised">
+                      Button
+                    </button>
+                  <%}else{%>
+                    <button class="mdl-button mdl-js-button mdl-button--raised" disabled>
+                      Button
+                    </button>
+                  <%}%>
+                </form>
+              </div>
+            </div>
+            <% } %>
+        </div>
+      </div>
+      <div class="mdl-tabs__panel" id="d">
+        <div class="row">
+          <% for(var i=0;i<Darr.length;i++){ %>
+            <div class="mdl-card mdl-shadow--4dp col-md-3 col-sm-6 col-12">
+              <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">
+                  <span class="sequence"><%=Darr[i].window%></span><br>
+                  <%= Darr[i].username %>
+                </h2>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <%=Darr[i].despretion%>
+              </div>
+              <div class="mdl-card__actions">
+                <form action="/admin/windows" method="post">
+                  <input type="hidden" name="process_id" value="<%= Darr[i].id %>" >
+                    <div class="mdl-textfield mdl-js-textfield">
+                      <textarea class="mdl-textfield__input" name="process" type="text" ><%= Darr[i].process %></textarea>
+                      <label class="mdl-textfield__label" for="sample5">Process Summary</label>
+                    </div>
+                  <%if(Darr[i].process == "not yet added"){%>
+                    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised">
+                      Button
+                    </button>
+                  <%}else{%>
+                    <button class="mdl-button mdl-js-button mdl-button--raised" disabled>
+                      Button
+                    </button>
+                  <%}%>
+                </form>
+              </div>
+            </div>
+            <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="/javascripts/material.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+
+</script>
+</html>

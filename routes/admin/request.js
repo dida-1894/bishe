@@ -33,7 +33,7 @@ router.get('/',function(req,res){
       }
     });
     break;
-    default:db.query(`SELECT * FROM request`,function(err,data){
+    default:db.query(`SELECT * FROM request ORDER BY id DESC`,function(err,data){
       if (err) {
         console.log(err);
       } else {

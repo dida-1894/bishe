@@ -5,23 +5,19 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cookieSession = require('cookie-session');
-var multer = require('multer');
+var session = require('express-session');
+var flash=require('connect-flash');
 
 var web = require('./routes/web/index');
-// var api = require('./routes/API/index');
 var admin = require('./routes/admin/admin');
-
 var app = express();
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-
 // upload
 // var multerObj = multer({dest:'./public/upload'});
 // app.use(multerObj.any());
-
 // cookie && session
 app.use(cookieParser());
 (function(){
@@ -35,7 +31,7 @@ app.use(cookieParser());
     maxAge: 30*60*1000  //30min
   }));
 })();
-
+// flash
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));

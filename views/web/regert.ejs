@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="/stylesheets/material.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script src="/javascripts/jquery.min.js" charset="utf-8"></script>
   <title>Document</title>
   <style media="screen">
     main{
@@ -22,6 +23,9 @@
       width: 100%;
       text-align: center;
     }
+    .mdl-textfield .mdl-button{
+      right: 0px;
+    }
   </style>
 </head>
 <body>
@@ -35,19 +39,19 @@
           <div class="mdl-card__supporting-text">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <input class="mdl-textfield__input" name="name" type="text" id="username">
-              <label class="mdl-textfield__label" for="sample3">real name</label>
+              <label class="mdl-textfield__label" for="sample3">姓名</label>
             </div>
           </div>
           <div class="mdl-card__supporting-text">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" name="phone" type="text" id="username">
-              <label class="mdl-textfield__label" for="sample3">phone</label>
+              <input class="mdl-textfield__input" name="phone" type="text" id="phone">
+              <label class="mdl-textfield__label" for="sample3">手机号码</label>
             </div>
           </div>
           <div class="mdl-card__supporting-text">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" name="despretion" type="text" id="username">
-              <label class="mdl-textfield__label" for="sample3">despretion</label>
+              <textarea class="mdl-textfield__input" name="despretion" type="text" id="despretion"></textarea>
+              <label class="mdl-textfield__label" for="sample3">申请描述</label>
             </div>
           </div>
           <div class="mdl-card__supporting-text">
@@ -63,18 +67,12 @@
           </div>
           <div class="mdl-card__supporting-text">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" name="email" type="text" id="username">
-              <label class="mdl-textfield__label" for="sample3">email</label>
-            </div>
-          </div>
-          <div class="mdl-card__supporting-text">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" name="password" type="text" id="username">
+              <input class="mdl-textfield__input" name="password" type="password" id="password">
               <label class="mdl-textfield__label" for="sample3">password</label>
             </div>
           </div>
           <div class="mdl-card__actions">
-            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised"></button>
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised">提交</button>
           </div>
         </div>
       </form>
@@ -82,4 +80,30 @@
   </main>
 </body>
 <script src="/javascripts/material.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+});
+  $(function(){
+    $('.btn').click(function(){
+      var phone=$("#phone").val();
+      var reg = /^(1){1}(3|5|7|8){1}[0-9]{9}/;
+      if (reg.test(phone)) {
+        $.ajax({
+          type: 'post',
+          url: '/regert',
+          data:{
+            phone:phone
+          }
+        });
+      } else {
+        alert('手机输入有误');
+      }
+    })
+  });
+</script>
 </html>

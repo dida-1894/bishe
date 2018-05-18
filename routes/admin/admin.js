@@ -24,6 +24,9 @@ var request=require('./request.js');
 router.use('/request',request);
 
 var users=require('./users.js');
-router.use('/users',users)
+router.use('/users',users);
+
+var windows = require('./windows.js');
+router.use('/windows',windows);
 
 module.exports = router;

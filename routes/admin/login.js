@@ -29,8 +29,12 @@ router.post('/',function(req,res,next){
         res.status(400).send('no this admin').end();
       } else if (data[0].passwd==password){
         // console.log(data[0].password;);
-        req.session['admin_id'] = data[0].id;
-        res.redirect('/admin');
+        req.session['admin_id'] = data[0];
+        if (req.session['admin_id'].type) {
+          res.redirect('/admin');
+        } else {
+          res.redirect('/admin/windows');
+        }
       } else {
         res.status(404).send('this password is incorrect').end();
       }
